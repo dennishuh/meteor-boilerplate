@@ -54,18 +54,22 @@ export class Editor extends Component {
   render() {
     if (this.props.note) {
       return (
-        <div>
-          <input value={this.props.note.title} placeholder="Untitled Note" onChange={this.handleTitleChange.bind(this)}/>
-          <textarea value={this.props.note.body} placeholder="Your note here" onChange={this.handleBodyChange.bind(this)}>
+        <div className="editor">
+          <input className="editor__title" value={this.props.note.title} placeholder="Untitled Note" onChange={this.handleTitleChange.bind(this)}/>
+          <textarea className="editor__body" value={this.props.note.body} placeholder="Your note here" onChange={this.handleBodyChange.bind(this)}>
           </textarea>
-          <button onClick={this.handleNoteDelete.bind(this)}>Delete Note</button>
+          <div>
+            <button className="button button--secondary" onClick={this.handleNoteDelete.bind(this)}>Delete Note</button>
+          </div>
         </div>
       )
     } else {
       return (
-        <p>
-          { this.props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started' }
-        </p>
+        <div className="editor">
+          <p className="editor__message">
+            { this.props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started' }
+          </p>
+        </div>
       )
     }
   }
